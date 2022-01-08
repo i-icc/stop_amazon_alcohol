@@ -10,3 +10,11 @@ buyNowButton.setAttribute("onclick", "stopAmazonAlcohol()")
 
 console.log(addToCartButton)
 console.log(buyNowButton)
+
+$(".add-to-cart-button").on("click",function(){
+    stopAmazonAlcohol()
+});
+
+$(".buy-now-button").on("click",function(){
+    stopAmazonAlcohol()
+});
