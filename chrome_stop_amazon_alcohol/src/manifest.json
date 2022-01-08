@@ -1,0 +1,13 @@
+{
+    "name": "chrome_stop_amazon_alcohol",
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "description": "後で説明文書きます",
+    "content_scripts": [{
+      "matches": ["https://www.amazon.co.jp/*"],
+      "js": [
+        "jquery-3.6.0.min.js",
+        "content2.js"
+      ]
+    }]
+  }
