@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"name": "arduino_stop_amazon_alcohol",
+			"path": ".."
+		}
+	],
+	"settings": {}
+}
