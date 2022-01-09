@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include <Wire.h>
+#include <WebUSB.h>
 
 const int pinNum = A5;
 
