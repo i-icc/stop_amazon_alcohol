@@ -1,7 +1,7 @@
 #include <Arduino.h>
-#include <Wire.h>
+#include <WebUSB.h>
 
-const int pinNum = A5;
+const int pinNum = A0;
 
 void setup() {
   // put your setup code here, to run once:
