@@ -1,20 +1,23 @@
+let flag = true
+
 function stopAmazonAlcohol(){
-    alert("やめとき")
+    console.log(flag)
+
+    alert("酔っ払っていませんか？\nセンサーに息を吹きかけてください")
+    // なんやかんや
+    flag = false
+
+    if (flag){
+
+    } else {
+        // 別ページに飛ばす
+    }
 }
 
-let addToCartButton = document.getElementById("add-to-cart-button")
-let buyNowButton = document.getElementById("buy-now-button")
-
-addToCartButton.setAttribute("onclick", "stopAmazonAlcohol();stopPropagation()")
-buyNowButton.setAttribute("onclick", "stopAmazonAlcohol()")
-
-console.log(addToCartButton)
-console.log(buyNowButton)
-
-$(".add-to-cart-button").on("click",function(){
-    stopAmazonAlcohol()
+$("#add-to-cart-button").mouseover(function(){
+    if (flag) stopAmazonAlcohol()
 });
 
-$(".buy-now-button").on("click",function(){
-    stopAmazonAlcohol()
+$("#buy-now-button").mouseover(function(){
+    if (flag) stopAmazonAlcohol()
 });
