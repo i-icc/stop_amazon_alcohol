@@ -24,8 +24,6 @@ function stopAmazonAlcohol(){
 
     alert("酔っ払っていませんか？\nセンサーに息を吹きかけてください")
     // なんやかんや
-    const vendor_id = 0x2341
-    const product_id = 0x8036
 
     if (! port){
       serial.requestPort().then(selectedPort => {
