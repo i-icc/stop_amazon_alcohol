@@ -1,19 +1,40 @@
 let flag = true
+let port
 
-async function stopAmazonAlcohol(){
+function connect() {
+  // t.io.println('Connecting to ' + port.device_.productName + '...');
+  port.connect().then(() => {
+    console.log(port);
+    t.io.println('Connected.');
+    connectButton.textContent = 'Disconnect';
+    port.onReceive = data => {
+      let textDecoder = new TextDecoder();
+      t.io.print(textDecoder.decode(data));
+    }
+    port.onReceiveError = error => {
+      t.io.println('Receive error: ' + error);
+    };
+  }, error => {
+    t.io.println('Connection error: ' + error);
+  });
+};
+
+function stopAmazonAlcohol(){
     console.log(flag)
 
     alert("酔っ払っていませんか？\nセンサーに息を吹きかけてください")
     // なんやかんや
     const vendor_id = 0x2341
     const product_id = 0x8036
-    await navigator.usb.requestDevice(
-      {
-        'filters': [
-          {'vendorId': vendor_id, 'product_id': product_id}
-        ]
-      }
-    )
+
+    if (! port){
+      serial.requestPort().then(selectedPort => {
+        port = selectedPort;
+        connect();
+      }).catch(error => {
+        t.io.println('Connection error: ' + error);
+      });
+    }
 
     flag = false
 
