@@ -17,10 +17,10 @@ var serial = {};
       { 'vendorId': 0x2341, 'productId': 0x804e },
       { 'vendorId': 0x2341, 'productId': 0x804f },
       { 'vendorId': 0x2341, 'productId': 0x8050 },
-    ];
+    ]
     return navigator.usb.requestDevice({ 'filters': filters }).then(
       device => new serial.Port(device)
-    );
+    )
   }
 
   serial.Port = function(device) {

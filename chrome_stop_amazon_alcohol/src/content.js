@@ -1,38 +1,18 @@
 let flag = true
 let port
 
-function connect() {
-  // t.io.println('Connecting to ' + port.device_.productName + '...');
-  port.connect().then(() => {
-    console.log(port);
-    t.io.println('Connected.');
-    connectButton.textContent = 'Disconnect';
-    port.onReceive = data => {
-      let textDecoder = new TextDecoder();
-      t.io.print(textDecoder.decode(data));
-    }
-    port.onReceiveError = error => {
-      t.io.println('Receive error: ' + error);
-    };
-  }, error => {
-    t.io.println('Connection error: ' + error);
-  });
-};
-
 function stopAmazonAlcohol(){
     console.log(flag)
 
     alert("酔っ払っていませんか？\nセンサーに息を吹きかけてください")
     // なんやかんや
 
-    if (! port){
-      serial.requestPort().then(selectedPort => {
-        port = selectedPort;
-        connect();
-      }).catch(error => {
-        t.io.println('Connection error: ' + error);
-      });
-    }
+    serial.requestPort().then(selectedPort => {
+      port = selectedPort
+    }).catch(error => {
+      console.log("コネクションエラー")
+      flag = true
+    }) 
 
     flag = false
 
@@ -50,3 +30,11 @@ $("#add-to-cart-button").mouseover(function(){
 $("#buy-now-button").mouseover(function(){
     if (flag) stopAmazonAlcohol()
 });
+
+serial.getPorts().then(ports => {
+  if (ports.length == 0) {
+    console.log("no connection")
+  } else {
+    port = ports[0];
+  }
+})
