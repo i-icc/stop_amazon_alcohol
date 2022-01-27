@@ -17,8 +17,6 @@ function judgeAlcohpl(){
 }
 
 function stopAmazonAlcohol(){
-    console.log(flag);
-
     alert("酔っ払っていませんか？\nセンサーに息を吹きかけてください");
     // なんやかんや
 
@@ -34,7 +32,7 @@ function stopAmazonAlcohol(){
       }
     })
 
-    console.log(port.onReceive())
+    console.log(initialize())
     // flag = false
 
     if (flag){
