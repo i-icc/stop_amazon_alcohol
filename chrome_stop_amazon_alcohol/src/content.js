@@ -7,7 +7,8 @@ let score;
 
 $("#addToCart_feature_div").before('<div class="a-button-stack"><span class="a-button a-spacing-small a-button-primary a-button-icon buybox-button-enhancement-size"><span class="a-button-inner"><input id="connect-device" class="a-button-input attach-dss-atc" type="button"><span class="a-button-text">センサーに接続する</span></span></span></div>');
 
-async function judgeAlcohpl(){
+function judgeAlcohpl(){
+  console.log(score + " " + alcoholScore)
   if (score > alcoholScore){
     alcoholScore = score;
   }
@@ -37,12 +38,14 @@ async function stopAmazonAlcohol(){
       return
     } else {
       await judgeAlcohpl()
+      const intervalId = setInterval(judgeAlcohpl, 100);
+      setTimeout(clearInterval(intervalId), 3000);
       console.log(alcoholScore)
       if (alcoholScore < 400){
-        // flag = false
-        alert("あなたはシラフです。")
+        flag = false
+        alert("( ´∀`)σ よし！")
       } else {
-        alert("酔ってるときに買い物するな")
+        alert("STOP 飲酒アマゾン")
       }
     }
 }

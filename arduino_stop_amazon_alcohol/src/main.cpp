@@ -3,6 +3,7 @@
 #include <WebUSB.h>
 
 WebUSB WebUSBSerial(1 , "www.amazon.co.jp/*");
+// WebUSB WebUSBSerial(1 , "*");
 
 #define Serial WebUSBSerial
 
@@ -22,7 +23,8 @@ void setup() {
 void loop() {
   Serial.flush();
   if (Serial) {
-    String data = String(analogRead(pinNum));
+    int score = analogRead(pinNum);
+    String data = String(score);
     for (int i = 0;i < data.length(); i++)
       Serial.write(data[i]);
     Serial.write("\r\n");
