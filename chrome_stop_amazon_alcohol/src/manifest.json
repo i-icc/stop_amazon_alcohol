@@ -10,5 +10,6 @@
         "serial.js",
         "content.js"
       ]
-    }]
+    }],
+    "web_accessible_resources": ["static/*.mp3"]
   }

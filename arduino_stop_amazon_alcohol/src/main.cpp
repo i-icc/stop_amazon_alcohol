@@ -7,7 +7,7 @@ WebUSB WebUSBSerial(1 , "www.amazon.co.jp/*");
 
 #define Serial WebUSBSerial
 
-const int pinNum = A0;
+const int pinNum = A1;
 
 void setup() {
   while (!Serial) {
