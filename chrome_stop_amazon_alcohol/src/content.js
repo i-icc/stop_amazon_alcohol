@@ -6,6 +6,8 @@ let port;
 let score;
 
 $("#addToCart_feature_div").before('<div class="a-button-stack"><span class="a-button a-spacing-small a-button-primary a-button-icon buybox-button-enhancement-size"><span class="a-button-inner"><input id="connect-device" class="a-button-input attach-dss-atc" type="button"><span class="a-button-text">センサーに接続する</span></span></span></div>');
+var ok_sound = new Audio(chrome.runtime.getURL('static/ok.mp3'));
+var ng_sound = new Audio(chrome.runtime.getURL('static/ng.mp3'));
 
 function judgeAlcohpl(){
   console.log(score + " " + alcoholScore)
@@ -44,8 +46,12 @@ async function stopAmazonAlcohol(){
       if (alcoholScore < 400){
         flag = false
         alert("( ´∀`)σ よし！")
+        ok_sound.play();
       } else {
         alert("STOP 飲酒アマゾン")
+        ng_sound.play();
+        $("#add-to-cart-button").remove();
+        $("#buy-now-button").remove();
       }
     }
 }
